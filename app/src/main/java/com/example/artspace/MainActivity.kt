@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Button
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -27,7 +28,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ArtSpaceApp(modifier = Modifier.padding(50.dp))
+            ArtSpaceApp(modifier = Modifier.fillMaxWidth())
         }
     }
 }
@@ -44,7 +45,15 @@ fun ArtSpaceApp(modifier: Modifier = Modifier){
         ArtWork(artWorks, currentImage, modifier = Modifier)
         Spacer(Modifier.height(40.dp))
         Description(descriptions, currentImage, modifier = Modifier)
-        NavigationButton()
+        Spacer(Modifier.height(40.dp))
+        Row(
+            modifier = modifier,
+            horizontalArrangement = Arrangement.SpaceEvenly
+        ){
+            NavigationButton("Previous", action = { currentImage = (currentImage - 1)%artWorks.size})
+            NavigationButton(buttonName = "Next", action = { currentImage = (currentImage + 1)%artWorks.size})
+        }
+
     }
 }
 
@@ -85,6 +94,8 @@ fun Description(descriptions: List<Int>, currentImage: Int, modifier: Modifier =
 }
 
 @Composable
-fun NavigationButton(modifier: Modifier = Modifier){
-
+fun NavigationButton(buttonName: String, action: () -> Unit, modifier: Modifier = Modifier){
+    Button(onClick = action, Modifier.width(140.dp)) {
+        Text(text = buttonName)
+    }
 }
