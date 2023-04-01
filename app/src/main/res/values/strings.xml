@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Art Space</string>
+    <string name="baobab">Baobab</string>
+    <string name="cheetah">Cheetah</string>
+    <string name="elephant">Elephant</string>
+    <string name="hills">Hills</string>
+    <string name="grassland">Grassland</string>
+    <string name="kilimanjaro">Kilimanjaro</string>
+    <string name="zebra">Zebra</string>
 </resources>
