@@ -41,11 +41,11 @@ fun ArtSpaceApp(modifier: Modifier = Modifier){
         mutableStateOf(0)
     }
 
-    Column(modifier = modifier){
-        ArtWork(artWorks, currentImage, modifier = Modifier)
-        Spacer(Modifier.height(40.dp))
-        Description(descriptions, currentImage, modifier = Modifier)
-        Spacer(Modifier.height(40.dp))
+    Column(modifier = modifier.padding(50.dp)){
+        ArtWork(artWorks, currentImage, modifier = modifier)
+        Spacer(Modifier.height(30.dp))
+        Description(descriptions, currentImage, modifier = modifier)
+        Spacer(Modifier.height(30.dp))
         Row(
             modifier = modifier,
             horizontalArrangement = Arrangement.SpaceEvenly
@@ -65,9 +65,9 @@ fun ArtWork(artWorks: List<Int>, currentImage: Int, modifier: Modifier = Modifie
         border = BorderStroke(2.dp, Color.Gray)
     ) {
         Column(
-            modifier = Modifier.padding(20.dp)
+            modifier = modifier.padding(20.dp).height(200.dp)
         ){
-            Image(painter = painterResource(id = artWorks[currentImage]), contentDescription = "art")
+            Image(painter = painterResource(id = artWorks[currentImage]), contentDescription = "art", modifier.fillMaxSize())
         }
     }
 }
@@ -76,7 +76,7 @@ fun ArtWork(artWorks: List<Int>, currentImage: Int, modifier: Modifier = Modifie
 fun Description(descriptions: List<Int>, currentImage: Int, modifier: Modifier = Modifier){
     Surface(
         elevation = 5.dp,
-        modifier = modifier.fillMaxWidth()
+        modifier = modifier
     ) {
         Column(
             modifier = modifier.padding(20.dp)
